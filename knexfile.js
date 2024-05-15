@@ -8,7 +8,7 @@ const sharedConfig = {
   seeds: {
     directory: './data/seeds',
   },
-  pool: {
+  pool: { //sqlight - needed for FK.
     afterCreate: (conn, done) => {
       conn.run('PRAGMA foreign_keys = ON', done)
     },
@@ -20,7 +20,7 @@ module.exports = {
     ...sharedConfig,
     connection: { filename: './data/dealer.db3' },
   },
-  testing: {
+  testing: { 
     ...sharedConfig,
     connection: { filename: './data/testing.db3' },
   },
