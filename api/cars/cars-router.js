@@ -10,9 +10,15 @@ router.get('/', async (req, res, next) => {
     })
     .catch(next)
 })
-router.get('/:id', async (req, res) => {
-    res.json(`getting a car with id ${req.params.id}`)
+
+router.get('/:id', async (req, res, next) => {
+    await Car.getById(req.params.id)
+    .then(car => {
+        res.status(200).json(car)
+    })
+    .catch(next)
 })
+
 router.post('/', async (req, res) => {
     res.json('posting new car')
 })
