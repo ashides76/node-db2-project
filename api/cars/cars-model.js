@@ -21,4 +21,5 @@ module.exports = {
   getAll, 
   getById,
   create,
+  getByVin
 }
